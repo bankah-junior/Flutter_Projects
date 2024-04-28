@@ -34,7 +34,7 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
             const StyledBodyText('Strength: '),
 
             for (int i = 0; i < strength; i++) 
-              Image.asset('assets/img/coffee_bean.png',
+              Image.asset('assets/home/Circle.png',
                 width: 25,
                 colorBlendMode: BlendMode.multiply,
                 color: Colors.brown[100],
