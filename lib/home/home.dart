@@ -441,7 +441,7 @@ class _HomeState extends State<Home> {
             if (index == 0) {
               Navigator.pushReplacementNamed(context, '/');
             } else if (index == 1) {
-              Navigator.pushReplacementNamed(context, '/');
+              Navigator.pushReplacementNamed(context, '/delivery');
             } else if (index == 2) {
               Navigator.pushReplacementNamed(context, '/');
             } else if (index == 3) {
