@@ -443,7 +443,7 @@ class _HomeState extends State<Home> {
             } else if (index == 1) {
               Navigator.pushReplacementNamed(context, '/delivery');
             } else if (index == 2) {
-              Navigator.pushReplacementNamed(context, '/');
+              Navigator.pushReplacementNamed(context, '/storePickup');
             } else if (index == 3) {
               Navigator.pushReplacementNamed(context, '/');
             } else {

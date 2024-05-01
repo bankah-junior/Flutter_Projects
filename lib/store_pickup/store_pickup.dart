@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Delivery extends StatelessWidget {
-  const Delivery({super.key});
+class StorePickup extends StatelessWidget {
+  const StorePickup({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +10,12 @@ class Delivery extends StatelessWidget {
       //   leading: BackButton(
       //     onPressed: () => Navigator.pushReplacementNamed(context, '/'),
       //   ),
-      //   title: const Text("Delivery"),
+      //   title: const Text("StorePickup"),
       //   shape: ContinuousRectangleBorder(
       //     borderRadius: BorderRadius.circular(55),
       //   ),
       // ),
-      backgroundColor: const Color.fromARGB(255, 255, 253, 253),
+      backgroundColor: const Color.fromARGB(255, 255, 251, 251),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -33,7 +33,7 @@ class Delivery extends StatelessWidget {
                     ),
                     const SizedBox(width: 10),
                     const Text(
-                      'Delivery',
+                      'Store Pickup',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -77,100 +77,45 @@ class Delivery extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              'assets/home/motor.png',
+                              'assets/home/store.png',
                               width: 60,
                             ),
                             const SizedBox(
                               width: 7,
                             ),
-                            Column(
+                            const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  'Deliver to',
+                                Text(
+                                  'Pickup at',
                                   style: TextStyle(
                                     fontSize: 16,
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                const Text(
-                                  '285 CMT8, D.10, HCM city',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                const SizedBox(
+                                SizedBox(
                                   height: 5,
                                 ),
                                 Text(
-                                  'Nick * 0896969696',
+                                  'SB Ha Thuyen, 113 Han Thuyen, D...',
                                   style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey[500],
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
                                   ),
+                                ),
+                                SizedBox(
+                                  height: 5,
                                 ),
                               ],
                             )
                           ],
                         ),
-                        TextButton.icon(
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(context, '/deliveryTo');
-                          },
-                          icon: const Icon(Icons.forward), 
-                          label: const Text(''),
+                        Image.asset(
+                          'assets/delivery/right-arrow.png',
+                          width: 10,
                         ),
-                        // Image.asset(
-                        //   'assets/delivery/right-arrow.png',
-                        //   width: 10,
-                        // ),
                       ],
                     ),
 
-                    const SizedBox(
-                      height: 17,
-                    ),
-
-                    Container(
-                      color: Colors.grey,
-                      height: 60,
-                      padding: const EdgeInsets.all(2),
-                      child: Container(
-                        color: const Color.fromARGB(255, 255, 253, 253),
-                        height: 55,
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Row(
-                          children: [
-                            const Text(
-                              'Store',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
-                            ),
-                            Container(
-                              width: 1,
-                              color: Colors.grey,
-                              margin: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                              child: const Text(""),
-                            ),
-                            const Text(
-                              'SB Ha Thuyen, 113 Han Thuy...',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
-                            ),
-                            const Expanded(child: SizedBox()),
-                            Image.asset(
-                              'assets/delivery/down-arrow.png',
-                              width: 15,
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
@@ -192,7 +137,7 @@ class Delivery extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          color: const Color.fromARGB(255, 255, 253, 253),
+                          color: const Color.fromARGB(255, 255, 251, 251),
                           child: const Padding(
                             padding: EdgeInsets.fromLTRB(20, 5, 20, 10),
                             child: Text(
