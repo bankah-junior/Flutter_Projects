@@ -13,7 +13,8 @@ class WelcomView extends StatefulWidget {
 class _WelcomViewState extends State<WelcomView> {
   final List levels = [
     "Beginner",
-    "inactive",
+    "Semi",
+    "Advanced",
   ];
   @override
   Widget build(BuildContext context) {
@@ -196,4 +197,5 @@ class _WelcomViewState extends State<WelcomView> {
       ),
     );
   }
+
 }
