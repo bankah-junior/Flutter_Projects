@@ -1,10 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_masterclass/general/bottom_bar.dart';
+import 'package:flutter_masterclass/general/icon_text_link_card.dart';
 import 'package:flutter_masterclass/home/home_card.dart';
 
-class Home extends StatelessWidget {
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
+
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+    List<dynamic> bibleStudiesJsonData = [];
+  
+  @override
+  void initState() {
+    super.initState();
+    _loadJsonData();
+  }
+
+  Future<void> _loadJsonData() async {
+    String jsonString = await rootBundle.loadString('assets/db/bibleStudies.json');
+    setState(() {
+      bibleStudiesJsonData = json.decode(jsonString);
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -109,15 +133,21 @@ class Home extends StatelessWidget {
                   height: 20,
                 ),
                 
-                const SingleChildScrollView(
+                SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      HomeCard(),
-                      HomeCard(),
-                      HomeCard(),
-                      HomeCard(),
-                      HomeCard(),
+                      // for(int i = 0; i <= 4; i++)
+                      //   const HomeCard(
+                      //     bsTitle: "Bible Studies",
+                      //     hcTitle: "Home Cell",
+                      //   ),
+                      for (int i = 0; i < bibleStudiesJsonData.length; i++)
+                        HomeCard(
+                          bsTitle: bibleStudiesJsonData[i]['name'], 
+                          hcTitle: bibleStudiesJsonData[i]['description'],
+                          id: bibleStudiesJsonData[i]['id'],
+                        ),
                     ],
                   ),
                 ),
@@ -127,76 +157,16 @@ class Home extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            Container(
-              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-              child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Color.fromARGB(255, 201, 227, 243),
-                ),
-                padding: const EdgeInsets.all(20),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment:CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.menu_book_sharp,
-                          size: 30,
-                          color: Colors.black87,
-                        ),
-                        SizedBox(width: 10,),
-                        Text(
-                          "About the books",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black87,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Icon(Icons.arrow_forward_ios),
-                  ],
-                ),
-              ),
+            const IconTextLinkCard(
+              leadIcon: Icons.menu_book_sharp, 
+              text: "About the books", 
+              endIcon: Icons.arrow_forward_ios,
             ),
 
-            const SizedBox(height: 0.0,),
-
-            Container(
-              padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-              child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Color.fromARGB(255, 201, 227, 243),
-                ),
-                padding: const EdgeInsets.all(20),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment:CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.privacy_tip,
-                          size: 30,
-                          color: Colors.black87,
-                        ),
-                        SizedBox(width: 10,),
-                        Text(
-                          "Privacy Policy",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black87,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Icon(Icons.arrow_forward_ios),
-                  ],
-                ),
-              ),
+            const IconTextLinkCard(
+              leadIcon: Icons.privacy_tip, 
+              text: "Privacy Policy", 
+              endIcon: Icons.arrow_forward_ios,
             ),
 
           ],

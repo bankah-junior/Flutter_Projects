@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 
 class HomeCard extends StatelessWidget {
-  const HomeCard({super.key});
+  const HomeCard({
+    super.key,
+    required this.bsTitle, // Bible Studies Title
+    required this.hcTitle, // Home Cell Title
+    required this.id, // Card ID
+  });
+
+  final String bsTitle;
+  final String hcTitle;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(width: 10,),
+        const SizedBox(
+          width: 10,
+        ),
         Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -37,9 +48,9 @@ class HomeCard extends StatelessWidget {
                               color: Colors.blue[400],
                             ),
                           ),
-                          const Text(
-                            "Gospel Sunday",
-                            style: TextStyle(
+                          Text(
+                            bsTitle,
+                            style: const TextStyle(
                               fontSize: 18,
                             ),
                           ),
@@ -47,7 +58,7 @@ class HomeCard extends StatelessWidget {
                       ),
                     ),
                     const Icon(Icons.arrow_forward),
-                  ],
+                  ]
                 ),
               ),
               Divider(
@@ -73,10 +84,11 @@ class HomeCard extends StatelessWidget {
                               color: Colors.blue[400],
                             ),
                           ),
-                          const Text(
-                            "Home Cell",
-                            style: TextStyle(
+                          Text(
+                            hcTitle,
+                            style: const TextStyle(
                               fontSize: 18,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ],
@@ -89,7 +101,9 @@ class HomeCard extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(width: 10,),
+        const SizedBox(
+          width: 10,
+        ),
       ],
     );
   }
