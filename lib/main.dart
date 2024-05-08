@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_masterclass/bibleStudies/bible_studies.dart';
-import 'package:flutter_masterclass/developer/developer.dart';
-import 'package:flutter_masterclass/home/home.dart';
-import 'package:flutter_masterclass/homeCell/home_cell.dart';
+import 'package:flutter_masterclass/screens/welcom_view.dart';
 
-void main() {
-  runApp(MaterialApp(
-    initialRoute: '/',
-    routes: {
-      '/': (context) => const Home(),
-      '/bibleStudies': (context) => const BibleStudies(),
-      '/homeCell': (context) => const HomeCell(),
-      '/developer': (context) => const Developer(),
-    }
-  ));
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: WelcomView(),
+    );
+  }
 }
