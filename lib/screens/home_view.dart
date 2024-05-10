@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_masterclass/customWidgets/bottom_navbar.dart';
-import 'package:flutter_masterclass/customWidgets/card_body.dart';
-import 'package:flutter_masterclass/customWidgets/card_heading.dart';
-import 'package:flutter_masterclass/screens/mode.dart';
-import 'package:flutter_masterclass/screens/welcom_view.dart';
+import 'package:hard_element/customWidgets/bottom_navbar.dart';
+import 'package:hard_element/customWidgets/card_body.dart';
+import 'package:hard_element/customWidgets/card_heading.dart';
+import 'package:hard_element/screens/mode.dart';
+import 'package:hard_element/screens/welcom_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeView extends StatefulWidget {

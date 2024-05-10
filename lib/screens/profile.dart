@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_masterclass/customWidgets/card_heading.dart';
-import 'package:flutter_masterclass/screens/home_view.dart';
+import 'package:hard_element/customWidgets/card_heading.dart';
+// import 'package:hard_element/customWidgets/bottom_navy_bar.dart';
+import 'package:hard_element/screens/home_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Profile extends StatefulWidget {
@@ -290,6 +291,18 @@ class _ProfileState extends State<Profile> {
           ),
         ),
       ),
+      // bottomNavigationBar: BottomNavyBar(
+      //   items: <BottomNavyBarItem>[
+      //     BottomNavyBarItem(icon: const Icon(Icons.man), title: const Text("Profile"), ),
+      //     BottomNavyBarItem(icon: const Icon(Icons.home), title: const Text("Home")),
+      //     BottomNavyBarItem(icon: const Icon(Icons.home), title: const Text("Home")),
+      //     BottomNavyBarItem(icon: const Icon(Icons.home), title: const Text("Home")),
+      //     BottomNavyBarItem(icon: const Icon(Icons.home), title: const Text("Home")),
+      //   ],
+      //   onItemSelected: (value) {
+      //     print(value);
+      //   },
+      // ),
     );
   }
 }

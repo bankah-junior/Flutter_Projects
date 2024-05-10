@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_masterclass/screens/home_view.dart';
-import 'package:flutter_masterclass/screens/profile.dart';
-import 'package:flutter_masterclass/screens/welcom_view.dart';
+import 'package:hard_element/screens/home_view.dart';
+import 'package:hard_element/screens/profile.dart';
+import 'package:hard_element/screens/welcom_view.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_masterclass/screens/home_view.dart';
+import 'package:hard_element/screens/home_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WelcomView extends StatefulWidget {
