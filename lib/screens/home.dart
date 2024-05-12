@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hard_element/customWidgets/bottom_navy_bar.dart';
+import 'package:hard_element/customWidgets/bottom_navbar.dart';
 import 'package:hard_element/screens/card_details.dart';
+import 'package:card_swiper/card_swiper.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -177,51 +178,77 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 200.0,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-                        image: DecorationImage(
-                          image: AssetImage(data[0].imageUrl),
-                          fit: BoxFit.cover,
-                        ),
+
+              // Padding(
+              //   padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
+              //   child: Column(
+              //     children: [
+              //       Container(
+              //         height: 200.0,
+              //         width: double.infinity,
+              //         decoration: BoxDecoration(
+              //           borderRadius:
+              //               const BorderRadius.all(Radius.circular(20)),
+              //           image: DecorationImage(
+              //             image: AssetImage(data[0].imageUrl),
+              //             fit: BoxFit.cover,
+              //           ),
+              //         ),
+              //       ),
+              //       Row(
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         crossAxisAlignment: CrossAxisAlignment.center,
+              //         children: [
+              //           for (int i = 0; i < 2; i++)
+              //             const Text(
+              //               "∙",
+              //               style: TextStyle(
+              //                   fontWeight: FontWeight.bold, fontSize: 35),
+              //             ),
+              //           for (int i = 0; i < 2; i++)
+              //             const Text(
+              //               "∙",
+              //               style: TextStyle(
+              //                   fontWeight: FontWeight.bold,
+              //                   fontSize: 35,
+              //                   color: Colors.amber),
+              //             ),
+              //           for (int i = 0; i < 2; i++)
+              //             const Text(
+              //               "∙",
+              //               style: TextStyle(
+              //                   fontWeight: FontWeight.bold, fontSize: 35),
+              //             ),
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
+
+              Center(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 30),
+                  width: 370,
+                  height: 300,
+                  child: Swiper(
+                    itemBuilder: (BuildContext context, int index) {
+                      return Image.asset(data[index].imageUrl,
+                          fit: BoxFit.fill);
+                    },
+                    itemCount: data.length,
+                    viewportFraction: 0.8,
+                    scale: 0.9,
+                    pagination: const SwiperPagination(
+                      alignment: Alignment.bottomCenter,
+                      builder: DotSwiperPaginationBuilder(
+                        color: Colors.grey,
+                        activeColor: Colors.amber,
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        for (int i = 0; i < 2; i++)
-                          const Text(
-                            "∙",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 35),
-                          ),
-                        for (int i = 0; i < 2; i++)
-                          const Text(
-                            "∙",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 35,
-                                color: Colors.amber),
-                          ),
-                        for (int i = 0; i < 2; i++)
-                          const Text(
-                            "∙",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 35),
-                          ),
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
               ),
+              
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -259,40 +286,14 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavyBar(
-        items: <BottomNavyBarItem>[
-          BottomNavyBarItem(
-            icon: const Icon(Icons.home),
-            title: const Text("Home"),
-            activeColor: const Color.fromARGB(255, 216, 38, 50),
-            textAlign: TextAlign.center
-          ),
-          BottomNavyBarItem(
-            icon: const Icon(Icons.video_camera_front),
-            title: const Text("Stream"),
-            activeColor: const Color.fromARGB(255, 216, 38, 50),
-            textAlign: TextAlign.center
-          ),
-          BottomNavyBarItem(
-            icon: const Icon(Icons.list),
-            title: const Text("Menu"),
-            activeColor: const Color.fromARGB(255, 216, 38, 50),
-            textAlign: TextAlign.center
-          ),
-          BottomNavyBarItem(
-            icon: const Icon(Icons.manage_accounts_sharp),
-            title: const Text("Profile"),
-            activeColor: const Color.fromARGB(255, 216, 38, 50),
-            textAlign: TextAlign.center
-          ),
-        ],
-        onItemSelected: (value) {
-        },
-      ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
