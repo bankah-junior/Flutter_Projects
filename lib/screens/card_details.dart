@@ -147,6 +147,7 @@ class _CardDetailsState extends State<CardDetails> {
             Stack(
               clipBehavior: Clip.none,
               children: [
+
                 Container(
                   width: double.infinity,
                   height: 400,
@@ -180,6 +181,7 @@ class _CardDetailsState extends State<CardDetails> {
                     ),
                   ),
                 ),
+
                 Positioned(
                   top: 210.0,
                   left: 10,
@@ -192,70 +194,12 @@ class _CardDetailsState extends State<CardDetails> {
                         borderRadius: BorderRadius.all(Radius.circular(30)),
                         color: Colors.white,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  data[selectedCard].title,
-                                  style: const TextStyle(
-                                      fontSize: 23,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const Text("❤️"),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10.0,
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
-                                      border: Border.all(
-                                          width: 2, color: Colors.amber)),
-                                  child: const Center(
-                                    child: Text(
-                                      "CBFC: U/A",
-                                      style: TextStyle(color: Colors.amber),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                Text(
-                                    "${data[selectedCard].date} ${data[selectedCard].durration}"),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                const Text("⭐ ⭐ ⭐ ⭐ ⭐"),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                Text("${data[selectedCard].rating}k Reviews"),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              data[selectedCard].description,
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                          ],
-                        ),
+                      child: CardInfo(
+                        title: data[selectedCard].title,
+                        date: data[selectedCard].date,
+                        duration: data[selectedCard].durration,
+                        description: data[selectedCard].description,
+                        rating: data[selectedCard].rating,
                       ),
                     ),
                   ),
@@ -263,85 +207,10 @@ class _CardDetailsState extends State<CardDetails> {
               ],
             ),
 
-            // Container(
-            //   padding: const EdgeInsets.all(20),
-            //   child: Container(
-            //     width: 330,
-            //     height: 270,
-            //     decoration: const BoxDecoration(
-            //       borderRadius: BorderRadius.all(Radius.circular(30)),
-            //       color: Colors.white,
-            //     ),
-            //     child: Padding(
-            //       padding: const EdgeInsets.all(20.0),
-            //       child: Column(
-            //         children: [
-            //           Row(
-            //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //             children: [
-            //               Text(
-            //                 data[selectedCard].title,
-            //                 style: const TextStyle(
-            //                     fontSize: 23, fontWeight: FontWeight.bold),
-            //               ),
-            //               const Text("❤️"),
-            //             ],
-            //           ),
-            //           const SizedBox(
-            //             height: 10.0,
-            //           ),
-            //           Row(
-            //             children: [
-            //               Container(
-            //                 width: 100,
-            //                 height: 30,
-            //                 decoration: BoxDecoration(
-            //                     borderRadius:
-            //                         const BorderRadius.all(Radius.circular(20)),
-            //                     border:
-            //                         Border.all(width: 2, color: Colors.amber)),
-            //                 child: const Center(
-            //                   child: Text(
-            //                     "CBFC: U/A",
-            //                     style: TextStyle(color: Colors.amber),
-            //                   ),
-            //                 ),
-            //               ),
-            //               const SizedBox(
-            //                 width: 15,
-            //               ),
-            //               Text(
-            //                   "${data[selectedCard].date} ${data[selectedCard].durration}"),
-            //             ],
-            //           ),
-            //           const SizedBox(
-            //             height: 10,
-            //           ),
-            //           Row(
-            //             children: [
-            //               const Text("⭐ ⭐ ⭐ ⭐ ⭐"),
-            //               const SizedBox(
-            //                 width: 15,
-            //               ),
-            //               Text("${data[selectedCard].rating}k Reviews"),
-            //             ],
-            //           ),
-            //           const SizedBox(
-            //             height: 20,
-            //           ),
-            //           Text(
-            //             data[selectedCard].description,
-            //             style: const TextStyle(fontSize: 16),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
-
             const SizedBox(
               height: 100,
             ),
+            
             Container(
               padding: const EdgeInsets.all(20),
               child: Container(
@@ -415,6 +284,88 @@ class _CardDetailsState extends State<CardDetails> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CardInfo extends StatelessWidget {
+  const CardInfo({
+    super.key,
+    required this.title,
+    required this.date,
+    required this.duration,
+    required this.description,
+    required this.rating,
+  });
+
+  final String title;
+  final String date;
+  final String duration;
+  final String description;
+  final String rating;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style:
+                    const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+              ),
+              const Text("❤️"),
+            ],
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          Row(
+            children: [
+              Container(
+                width: 100,
+                height: 30,
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    border: Border.all(width: 2, color: Colors.amber)),
+                child: const Center(
+                  child: Text(
+                    "CBFC: U/A",
+                    style: TextStyle(color: Colors.amber),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 15,
+              ),
+              Text("$date $duration"),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              const Text("⭐ ⭐ ⭐ ⭐ ⭐"),
+              const SizedBox(
+                width: 15,
+              ),
+              Text("${rating}k Reviews"),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            description,
+            style: const TextStyle(fontSize: 16),
+          ),
+        ],
       ),
     );
   }
