@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hard_element/customWidgets/bottom_navbar.dart';
 import 'package:hard_element/screens/card_details.dart';
-import 'package:card_swiper/card_swiper.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -11,285 +10,366 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<Data> data = [
-    Data(
-      imageUrl: "assets/images/Jumanji.jpg",
-      id: 0,
-    ),
-    Data(
-      imageUrl: "assets/images/Avengers.jpg",
-      id: 1,
-    ),
-    Data(
-      imageUrl: "assets/images/Gray_man.jpg",
-      id: 2,
-    ),
-    Data(
-      imageUrl: "assets/images/Justice_League.jpg",
-      id: 3,
-    ),
-    Data(
-      imageUrl: "assets/images/LUCK.jpg",
-      id: 4,
-    ),
-    Data(
-      imageUrl: "assets/images/the100.jpg",
-      id: 5,
-    ),
-    Data(
-      imageUrl: "assets/images/Togo.jpg",
-      id: 6,
-    ),
+  List<BookProps> books = [
+    BookProps(
+        id: 0,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/01.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "New"),
+    BookProps(
+        id: 1,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/02.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "New"),
+    BookProps(
+        id: 2,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/03.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "Trending"),
+    BookProps(
+        id: 3,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/04.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "Trending"),
+    BookProps(
+        id: 4,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/05.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "Best"),
+    BookProps(
+        id: 5,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/06.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "Best"),
+    BookProps(
+        id: 6,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/11.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "Popular"),
+    BookProps(
+        id: 7,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/12.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "Popular"),
+    BookProps(
+        id: 8,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/13.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "Popular"),
+    BookProps(
+        id: 9,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/14.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "Popular"),
+    BookProps(
+        id: 10,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/15.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "Popular"),
+    BookProps(
+        id: 11,
+        title: "The Lord of the Rings",
+        author: "J.R.R. Tolkien",
+        image: const AssetImage("assets/images/16.jpg"),
+        price: "\$16.99",
+        dscription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+        category: "Popular"),
   ];
 
-  final List<String> category = [
-    "New",
-    "Trending",
-    "Funny",
-    "Drama",
-  ];
+  bool _new = true;
+  bool _trending = false;
+  bool _best = false;
 
-  List<OffersTypes> offers = [
-    OffersTypes(
-      icon: Icons.house,
-      text: "Special Theatre",
-      color: Colors.white,
-      bgColor: const Color.fromARGB(255, 90, 2, 105),
-    ),
-    OffersTypes(
-      icon: Icons.group,
-      text: "Group By",
-      color: Colors.white,
-      bgColor: const Color.fromARGB(255, 115, 137, 123),
-    ),
-    OffersTypes(
-      icon: Icons.online_prediction,
-      text: "Online",
-      color: Colors.white,
-      bgColor: Colors.yellow,
-    ),
-  ];
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    //List<BookProps> newBooks = books.where((book) => book.category == 'New').toList();
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 245, 245, 245),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 8, 15, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Row(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Hi, Bankah",
+                  style: TextStyle(fontSize: 15, color: Colors.grey[700]),
+                ),
+
+                const Padding(
+                  padding: EdgeInsets.only(top: 5),
+                  child: Text(
+                    "Discover Latest Book",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+
+                // Search bar
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      color: Colors.grey[300],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "Video",
-                          style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 216, 38, 50),
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15.0),
+                            child: TextField(
+                              controller: _searchController,
+                              decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Search book...',
+                                hintStyle: TextStyle(color: Colors.grey),
+                              ),
+                            ),
                           ),
                         ),
-                        Text(
-                          "Play",
-                          style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.amber,
+                        Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: Colors.red[200],
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              Icons.search,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                    Container(
-                      width: 50.0,
-                      height: 50.0,
-                      decoration: const BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/user.jpg"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      CategoryBox(
-                        text: "New",
-                        color: Colors.white,
-                        bgColor: Color.fromARGB(255, 216, 38, 50),
-                      ),
-                      CategoryBox(
-                        text: "Trending",
-                        color: Colors.black,
-                        bgColor: Colors.white,
-                      ),
-                      CategoryBox(
-                        text: "Funny",
-                        color: Colors.black,
-                        bgColor: Colors.white,
-                      ),
-                      CategoryBox(
-                        text: "Drama",
-                        color: Colors.black,
-                        bgColor: Colors.white,
-                      ),
-                    ],
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-                child: Container(
-                  width: double.infinity,
-                  height: 55.0,
-                  padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(30))),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // End of Search bar
+
+                // Book list
+                Padding(
+                  padding: const EdgeInsets.only(top: 25),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.search),
-                          SizedBox(
+                          // Toggling between the tabs to output contents based on active or true variable
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _new = true;
+                                _trending = false;
+                                _best = false;
+                              });
+                            },
+                            child: ConditionalActiveText(
+                              isActive: _new,
+                              text: "New",
+                            ),
+                          ),
+                          const SizedBox(
                             width: 20,
                           ),
-                          Text(
-                            "Search...",
-                            style: TextStyle(fontWeight: FontWeight.w600),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _new = false;
+                                _trending = true;
+                                _best = false;
+                              });
+                            },
+                            child: ConditionalActiveText(
+                              isActive: _trending,
+                              text: "Trending",
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _new = false;
+                                _trending = false;
+                                _best = true;
+                              });
+                            },
+                            child: ConditionalActiveText(
+                              isActive: _best,
+                              text: "Best Sales",
+                            ),
                           ),
                         ],
                       ),
-                      Icon(Icons.menu)
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // Outputting all data from the books list with category == New and _new variable being true
+                          for (int i = 0; i < books.length; i++)
+                            if (_new == true && books[i].category == "New")
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CardDetails(
+                                        id: books[i].id,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 165,
+                                  height: 250,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: books[i].image,
+                                        fit: BoxFit.cover),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                  ),
+                                ),
+                              ),
+
+                          // Outputting all data from the books list with category == Trending and _trending variable being true
+                          for (int i = 0; i < books.length; i++)
+                            if (_trending == true &&
+                                books[i].category == "Trending")
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CardDetails(
+                                        id: books[i].id,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 165,
+                                  height: 250,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: books[i].image,
+                                        fit: BoxFit.cover),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                  ),
+                                ),
+                              ),
+
+                          // Outputting all data from the books list with category == Best and _best variable being true
+                          for (int i = 0; i < books.length; i++)
+                            if (_best == true && books[i].category == "Best")
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CardDetails(
+                                        id: books[i].id,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 165,
+                                  height: 250,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: books[i].image,
+                                        fit: BoxFit.cover),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                  ),
+                                ),
+                              ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
-              ),
+                // End of Book list
 
-              // Padding(
-              //   padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
-              //   child: Column(
-              //     children: [
-              //       Container(
-              //         height: 200.0,
-              //         width: double.infinity,
-              //         decoration: BoxDecoration(
-              //           borderRadius:
-              //               const BorderRadius.all(Radius.circular(20)),
-              //           image: DecorationImage(
-              //             image: AssetImage(data[0].imageUrl),
-              //             fit: BoxFit.cover,
-              //           ),
-              //         ),
-              //       ),
-              //       Row(
-              //         mainAxisAlignment: MainAxisAlignment.center,
-              //         crossAxisAlignment: CrossAxisAlignment.center,
-              //         children: [
-              //           for (int i = 0; i < 2; i++)
-              //             const Text(
-              //               "∙",
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.bold, fontSize: 35),
-              //             ),
-              //           for (int i = 0; i < 2; i++)
-              //             const Text(
-              //               "∙",
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.bold,
-              //                   fontSize: 35,
-              //                   color: Colors.amber),
-              //             ),
-              //           for (int i = 0; i < 2; i++)
-              //             const Text(
-              //               "∙",
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.bold, fontSize: 35),
-              //             ),
-              //         ],
-              //       ),
-              //     ],
-              //   ),
-              // ),
-
-              Center(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 30),
-                  width: 370,
-                  height: 300,
-                  child: Swiper(
-                    itemBuilder: (BuildContext context, int index) {
-                      return Image.asset(data[index].imageUrl,
-                          fit: BoxFit.fill);
-                    },
-                    itemCount: data.length,
-                    viewportFraction: 0.8,
-                    scale: 0.9,
-                    pagination: const SwiperPagination(
-                      alignment: Alignment.bottomCenter,
-                      builder: DotSwiperPaginationBuilder(
-                        color: Colors.grey,
-                        activeColor: Colors.amber,
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Popular",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
-                    ),
+                      Column(
+                        children: [
+                          // Outputting all data with category equals "Popular"
+                          for (int i = 0; i < books.length; i++)
+                            if (books[i].category == "Popular")
+                              // TextCard
+                              TextCard(
+                                id: books[i].id,
+                                image: books[i].image,
+                                title: books[i].title,
+                                author: books[i].author,
+                                price: books[i].price,
+                              ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
-              ),
-              
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    for (int i = 0; i < offers.length; i++)
-                      Offers(
-                        icon: offers[i].icon,
-                        text: offers[i].text,
-                        color: offers[i].color,
-                        bgColor: offers[i].bgColor,
-                      ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Column(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: PlayCardTitle(title: "Popular"),
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          for (int i = 1; i < data.length; i++)
-                            PlayCard(
-                              image: data[i].imageUrl,
-                              id: data[i].id,
-                            ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -298,154 +378,146 @@ class _HomeState extends State<Home> {
   }
 }
 
-class CategoryBox extends StatelessWidget {
-  const CategoryBox({
-    super.key,
-    required this.text,
-    required this.color,
-    required this.bgColor,
+// Book properties
+class BookProps {
+  final int id;
+  final ImageProvider image;
+  final String title;
+  final String author;
+  final String price;
+  final String dscription;
+  final String category;
+
+  BookProps({
+    required this.id,
+    required this.image,
+    required this.title,
+    required this.author,
+    required this.price,
+    required this.dscription,
+    required this.category,
   });
-
-  final String text;
-  final Color color;
-  final Color bgColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 15),
-      child: Container(
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: const BorderRadius.all(Radius.circular(20)),
-        ),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
-            child: Text(
-              text,
-              style: TextStyle(
-                color: color,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
 
-class Offers extends StatelessWidget {
-  const Offers({
-    super.key,
-    required this.icon,
-    required this.text,
-    required this.color,
-    required this.bgColor,
-  });
-
-  final IconData icon;
-  final String text;
-  final Color color;
-  final Color bgColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 15),
-      child: Container(
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: const BorderRadius.all(Radius.circular(30)),
-        ),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-            child: Row(
-              children: [
-                Icon(
-                  icon,
-                  color: color,
-                ),
-                const SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  text,
-                  style: TextStyle(
-                    color: color,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class PlayCard extends StatelessWidget {
-  const PlayCard({
+// A card that contains image and texts
+class TextCard extends StatelessWidget {
+  const TextCard({
     super.key,
     required this.image,
+    required this.title,
+    required this.author,
+    required this.price,
     required this.id,
   });
-  final String image;
+
+  final ImageProvider image;
+  final String title;
+  final String author;
+  final String price;
   final int id;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const SizedBox(
-          width: 15,
-        ),
-        Container(
-          width: 130,
-          height: 130,
-          padding: const EdgeInsets.only(right: 20.0),
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            image: DecorationImage(
-              image: AssetImage(image),
-              fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CardDetails(
+              id: id,
             ),
           ),
-          child: Center(
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CardDetails(
-                      id: id,
-                    ),
-                  ),
-                );
-              },
-              child: Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Center(
-                  child: Container(
-                    width: 35,
-                    height: 35,
-                    decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: const Center(
-                      child: Icon(Icons.play_arrow, color: Colors.white),
-                    ),
-                  ),
-                ),
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: Row(
+          children: [
+            Container(
+              width: 80,
+              height: 90,
+              decoration: BoxDecoration(
+                image: DecorationImage(image: image, fit: BoxFit.contain),
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
               ),
             ),
+            const SizedBox(
+              width: 20,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                ),
+                const SizedBox(
+                  height: 1,
+                ),
+                Text(
+                  author,
+                  style: const TextStyle(
+                    fontSize: 13,
+                  ),
+                ),
+                const SizedBox(
+                  height: 1,
+                ),
+                Text(
+                  price,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// Outputs a text and an underline
+class ActiveText extends StatelessWidget {
+  const ActiveText({
+    super.key,
+    required this.text,
+    required this.textStyle,
+    this.underlineThickness = 2.0,
+    this.underlineColor = Colors.black,
+    this.underlineSpacing = 2.0,
+  });
+
+  final String text;
+  final TextStyle textStyle;
+  final double underlineThickness;
+  final Color underlineColor;
+  final double underlineSpacing;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.bottomLeft,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(bottom: underlineSpacing),
+          child: Text(
+            text,
+            style: textStyle,
+          ),
+        ),
+        Positioned(
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Container(
+            height: underlineThickness,
+            color: underlineColor,
           ),
         ),
       ],
@@ -453,52 +525,36 @@ class PlayCard extends StatelessWidget {
   }
 }
 
-class PlayCardTitle extends StatelessWidget {
-  const PlayCardTitle({super.key, required this.title});
+// Checks if a condition is true then adds an underline using the ActiveText widget
+class ConditionalActiveText extends StatelessWidget {
+  final bool isActive;
+  final String text;
 
-  final String title;
+  const ConditionalActiveText(
+      {super.key, required this.isActive, required this.text});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-          ),
-          const Text(
-            "More",
-            style: TextStyle(
-              color: Colors.yellow,
-              fontSize: 16,
+    return isActive
+        ? ActiveText(
+            text: text,
+            textStyle: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
             ),
-          ),
-        ],
-      ),
-    );
+            underlineThickness: 2.0,
+            underlineColor: Colors.black,
+            underlineSpacing:
+                4.0, // Adjust this value to change the space between text and underline
+          )
+        : Text(
+            text,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.normal,
+              color: Colors.grey[700],
+            ),
+          );
   }
-}
-
-class Data {
-  final String imageUrl;
-  final int id;
-
-  Data({required this.imageUrl, required this.id});
-}
-
-class OffersTypes {
-  final IconData icon;
-  final String text;
-  final Color color;
-  final Color bgColor;
-
-  OffersTypes({
-    required this.icon,
-    required this.text,
-    required this.color,
-    required this.bgColor,
-  });
 }

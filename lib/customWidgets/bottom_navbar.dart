@@ -28,8 +28,7 @@ class BottomNavBar extends StatelessWidget {
           color: Colors.black, // unselected icon color
           activeColor: Colors.white, // selected icon and text color
           iconSize: 30, // tab button icon size
-          tabBackgroundColor: const Color.fromARGB(
-              255, 216, 38, 50), // selected tab background color
+          tabBackgroundColor: const Color.fromARGB(255, 189, 126, 130), // selected tab background color
           padding: const EdgeInsets.symmetric(
               horizontal: 20, vertical: 5), // navigation bar padding
           tabs: const [
@@ -38,15 +37,11 @@ class BottomNavBar extends StatelessWidget {
               text: 'Home',
             ),
             GButton(
-              icon: Icons.heart_broken_sharp,
-              text: 'Likes',
+              icon: Icons.bookmark_added_outlined,
+              text: 'Save',
             ),
             GButton(
-              icon: Icons.search,
-              text: 'Search',
-            ),
-            GButton(
-              icon: Icons.man,
+              icon: Icons.man_3_outlined,
               text: 'Profile',
             )
           ]),
