@@ -5,7 +5,8 @@ class CustomDropDownButtonClass extends StatelessWidget {
   List<String> values;
   double width;
 
-  CustomDropDownButtonClass({super.key, required this.values, required this.width});
+  CustomDropDownButtonClass(
+      {super.key, required this.values, required this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +15,15 @@ class CustomDropDownButtonClass extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         color: const Color.fromRGBO(
-          53,
-          53,
-          53,
+          45,
+          64,
+          78,
           1.0,
         ),
         borderRadius: BorderRadius.circular(
           10,
         ),
+        border: Border.all(width: 0.8, color: Colors.white),
       ),
       child: DropdownButton(
         value: values.first,
@@ -29,16 +31,16 @@ class CustomDropDownButtonClass extends StatelessWidget {
         items: values.map(
           (e) {
             return DropdownMenuItem(
-              child: Text(e),
               value: e,
+              child: Text(e),
             );
           },
         ).toList(),
         underline: Container(),
         dropdownColor: const Color.fromRGBO(
-          53,
-          53,
-          53,
+          45,
+          64,
+          78,
           1.0,
         ),
         style: const TextStyle(

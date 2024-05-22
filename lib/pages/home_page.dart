@@ -17,7 +17,13 @@ class HomePage extends StatelessWidget {
         child: Container(
           height: _deviceHeight,
           width: _deviceWidth,
-          padding: EdgeInsets.symmetric(horizontal: _deviceWidth * 0.05),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage("assets/images/astronaut.jpg"),
+            )
+          ),
+          padding: EdgeInsets.symmetric(horizontal: _deviceWidth * 0.05, vertical: _deviceHeight * 0.02),
           child: Stack(
             children: [
               Column(
@@ -29,10 +35,10 @@ class HomePage extends StatelessWidget {
                   _bookRideWidget(),
                 ],
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: _astroImageWidget(),
-              ),
+              // Align(
+              //   alignment: Alignment.centerRight,
+              //   child: _astroImageWidget(),
+              // ),
             ],
           ),
         ),
@@ -41,16 +47,35 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _pageTitle() {
-    return const Text(
-      "#GoMoon",
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 70,
-        fontWeight: FontWeight.w800,
+    return Center(
+      child: Stack(
+        alignment: Alignment.bottomLeft,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(bottom: 0.0),
+            child: Text(
+            "GoMoon",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 70,
+              fontWeight: FontWeight.w800,
+            ),),
+          ),
+        Positioned(
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Container(
+            height: 5.0,
+            color: Colors.white,
+          ),
+        ),
+        ],
       ),
     );
   }
 
+  // ignore: unused_element
   Widget _astroImageWidget() {
     return Container(
       height: _deviceHeight * 0.50,
@@ -84,8 +109,14 @@ class HomePage extends StatelessWidget {
   Widget _destionationDropDownWidget() {
     return CustomDropDownButtonClass(
       values: const [
-        'James Webb Station',
-        'Preneure Station',
+        "Chittagong",
+        "Dhaka",
+        "Sylhet",
+        "Cox's Bazar",
+        "Khulna",
+        "Rajshahi",
+        "Barishal",
+        "Rangpur",
       ],
       width: _deviceWidth,
     );
@@ -102,7 +133,12 @@ class HomePage extends StatelessWidget {
           width: _deviceWidth * 0.45,
         ),
         CustomDropDownButtonClass(
-          values: const ['Economy', 'Business', 'First', 'Private'],
+          values: const [
+            "Adult",
+            "Children",
+            "Infant",
+            "Senior",
+          ],
           width: _deviceWidth * 0.40,
         ),
       ],
@@ -122,7 +158,7 @@ class HomePage extends StatelessWidget {
         child: const Text(
           "Book Ride!",
           style: TextStyle(
-            color: Colors.black,
+            color: Color.fromARGB(255, 45, 64, 78),
           ),
         ),
       ),
