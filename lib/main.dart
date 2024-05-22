@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:hard_element/screens/home.dart';
 
-void main() => runApp(const MyApp());
+import './pages/home_page.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+void main() {
+  runApp(const App());
+}
+
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Home(),
-    ); 
+    return MaterialApp(
+      title: 'GoMooon',
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color.fromRGBO(31, 31, 31, 1.0),
+      ),
+      home: HomePage(),
+    );
   }
 }
