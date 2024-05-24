@@ -1,0 +1,31 @@
+bool _isObscured = true;
+
+TextField(
+  obscureText: _isObscured,
+  decoration: InputDecoration(
+    labelText: 'Password',
+    border: OutlineInputBorder(),
+    suffixIcon: IconButton(
+      icon: Icon(
+        _isObscured ? Icons.visibility : Icons.visibility_off,
+      ),
+      onPressed: () {
+        setState(() {
+          _isObscured = !_isObscured;
+        });
+      },
+    ),
+  ),
+),
+
+
+bool _isChecked = false;
+
+Checkbox(
+  value: _isChecked,
+  onChanged: (bool value) {
+    setState(() {
+      _isChecked = value;
+    });
+  },
+),
