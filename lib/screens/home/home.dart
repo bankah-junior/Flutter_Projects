@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_moon/screens/home/card_detail.dart';
-import 'package:go_moon/widgets/bottom_navbar.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -48,8 +47,9 @@ class Home extends StatelessWidget {
                         SizedBox(width: 10.0),
                         CircleAvatar(
                           backgroundImage:
-                              NetworkImage('https://i.pravatar.cc/150?img=6'),
-                        )
+                              AssetImage("assets/images/user1.jpg"),
+                          radius: 20,
+                        ),
                       ],
                     ),
                   ],
@@ -352,7 +352,7 @@ class Home extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      // bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_moon/screens/Template.dart';
 import 'package:go_moon/screens/authentication/signup.dart';
-import 'package:go_moon/screens/home/home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -102,7 +102,7 @@ class _LoginState extends State<Login> {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const Home()),
+                    MaterialPageRoute(builder: (context) => const Template()),
                   );
                 },
                 child: Container(
