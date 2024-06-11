@@ -118,8 +118,8 @@ class _LearningState extends State<Learning> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const MyCard(),
-              const MyCard(),
+              const MyCard(cardImg: AssetImage("assets/images/class1.jpg"),),
+              const MyCard(cardImg: AssetImage("assets/images/user1.jpg"),),
             ],
           ),
         ),
@@ -129,7 +129,12 @@ class _LearningState extends State<Learning> {
 }
 
 class MyCard extends StatelessWidget {
-  const MyCard({super.key});
+  const MyCard({
+    super.key,
+    required this.cardImg,
+  });
+
+  final ImageProvider cardImg;
 
   @override
   Widget build(BuildContext context) {
@@ -179,13 +184,13 @@ class MyCard extends StatelessWidget {
         Container(
           width: deviceWidth,
           height: deviceHeight * 0.25,
-          decoration: const BoxDecoration(
-            color: Color.fromARGB(155, 215, 216, 215),
-            borderRadius: BorderRadius.all(
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(155, 215, 216, 215),
+            borderRadius: const BorderRadius.all(
               Radius.circular(10),
             ),
             image: DecorationImage(
-              image: AssetImage("assets/images/user1.jpg"),
+              image: cardImg,
               fit: BoxFit.cover,
             ),
           ),
@@ -206,7 +211,7 @@ class MyCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
-                  foregroundImage: AssetImage("assets/images/user1.jpg"),
+                  foregroundImage: AssetImage("assets/images/Brandnn.jpg"),
                 ),
                 SizedBox(
                   width: 8,
@@ -262,7 +267,8 @@ class MyCard extends StatelessWidget {
 }
 
 class WeekButton extends StatefulWidget {
-  const WeekButton({super.key, required this.state});
+  const WeekButton({Key? key, required this.state,})
+      : super(key: key);
 
   final bool state;
 
@@ -271,12 +277,14 @@ class WeekButton extends StatefulWidget {
 }
 
 class _WeekButtonState extends State<WeekButton> {
+  bool _isToggled = true;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         setState(() {
-          !widget.state;
+          _isToggled = !_isToggled;
         });
       },
       child: Container(
@@ -284,7 +292,7 @@ class _WeekButtonState extends State<WeekButton> {
         height: 30,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: widget.state == true
+          color: _isToggled
               ? const Color.fromARGB(255, 71, 198, 143)
               : Colors.white,
         ),

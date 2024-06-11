@@ -178,7 +178,7 @@ class Home extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(100)),
                             ),
                             child: Container(
-                              width: deviceWidth * 0.5,
+                              width: deviceWidth * 0.3,
                               height: 6,
                               decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 71, 198, 143),
