@@ -6,6 +6,9 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var deviceWidth = MediaQuery.of(context).size.width;
+    // var deviceHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -23,7 +26,7 @@ class Home extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Welcome Jordan",
+                          "Welcome Bankah",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20.0,
@@ -47,7 +50,7 @@ class Home extends StatelessWidget {
                         SizedBox(width: 10.0),
                         CircleAvatar(
                           backgroundImage:
-                              AssetImage("assets/images/user1.jpg"),
+                              AssetImage("assets/images/Brandnn.jpg"),
                           radius: 20,
                         ),
                       ],
@@ -73,77 +76,14 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                SingleChildScrollView(
+                const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      Container(
-                        height: 50,
-                        padding: const EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 0.8, color: Colors.grey),
-                        ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(Icons.fastfood),
-                            SizedBox(width: 10.0),
-                            Text('Category'),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 10.0),
-                      Container(
-                        height: 50,
-                        padding: const EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 0.8, color: Colors.grey),
-                        ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(Icons.draw),
-                            SizedBox(width: 10.0),
-                            Text('Arts'),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 10.0),
-                      Container(
-                        height: 50,
-                        padding: const EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 0.8, color: Colors.grey),
-                        ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(Icons.gamepad),
-                            SizedBox(width: 10.0),
-                            Text('Game'),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 10.0),
-                      Container(
-                        height: 50,
-                        padding: const EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 0.8, color: Colors.grey),
-                        ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(Icons.movie),
-                            SizedBox(width: 10.0),
-                            Text('Movie'),
-                          ],
-                        ),
-                      ),
+                      MyButtonIconText(icon: Icons.fastfood, text: "Category"),
+                      MyButtonIconText(icon: Icons.draw, text: "Art"),
+                      MyButtonIconText(icon: Icons.gamepad, text: "Game"),
+                      MyButtonIconText(icon: Icons.movie, text: "Movie"),
                     ],
                   ),
                 ),
@@ -238,7 +178,7 @@ class Home extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(100)),
                             ),
                             child: Container(
-                              width: 80,
+                              width: deviceWidth * 0.5,
                               height: 6,
                               decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 71, 198, 143),
@@ -272,79 +212,11 @@ class Home extends StatelessWidget {
                 const SizedBox(
                   height: 20.0,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 165,
-                          height: 165,
-                          padding: const EdgeInsets.all(8.0),
-                          decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                  image: AssetImage("assets/images/user1.jpg"),
-                                  fit: BoxFit.cover),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Icon(
-                                Icons.save,
-                                color: Colors.white,
-                              )
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
-                        const Text(
-                          "data",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 71, 198, 143),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 165,
-                          height: 165,
-                          padding: const EdgeInsets.all(8.0),
-                          decoration: BoxDecoration(
-                            image: const DecorationImage(
-                              image: AssetImage("assets/images/user1.jpg"),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Icon(
-                                Icons.save,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
-                        const Text(
-                          "data",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 71, 198, 143),
-                          ),
-                        ),
-                      ],
-                    ),
+                    MyCard(cardImg: AssetImage("assets/images/class1.jpg"),),
+                    MyCard(cardImg: AssetImage("assets/images/class2.JPG"),),
                   ],
                 ),
               ],
@@ -353,6 +225,126 @@ class Home extends StatelessWidget {
         ),
       ),
       // bottomNavigationBar: const BottomNavBar(),
+    );
+  }
+}
+
+class MyButtonIconText extends StatelessWidget {
+  const MyButtonIconText({
+    super.key,
+    required this.icon,
+    required this.text,
+  });
+
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    // ignore: no_leading_underscores_for_local_identifiers
+    void _showDialog(String title, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+    return GestureDetector(
+      onTap: () {
+        _showDialog(text, "Explore more from $text.");
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10),
+        child: Container(
+          height: 50,
+          padding: const EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(width: 0.8, color: Colors.grey),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Icon(
+                icon,
+                color: Colors.black,
+              ),
+              const SizedBox(width: 10.0),
+              Text(
+                text,
+                style: const TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyCard extends StatelessWidget {
+  const MyCard({
+    super.key,
+    required this.cardImg,
+  });
+
+  final ImageProvider cardImg;
+
+  @override
+  Widget build(BuildContext context) {
+    var deviceWidth = MediaQuery.of(context).size.width;
+    var deviceHeight = MediaQuery.of(context).size.height;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: deviceWidth * 0.43,
+          height: deviceHeight * 0.25,
+          padding: const EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: cardImg,
+              fit: BoxFit.cover,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Icon(
+                Icons.save,
+                color: Colors.white,
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 10.0,
+        ),
+        const Text(
+          "data",
+          style: TextStyle(
+            color: Color.fromARGB(255, 71, 198, 143),
+          ),
+        ),
+      ],
     );
   }
 }

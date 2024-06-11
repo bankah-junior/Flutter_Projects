@@ -84,8 +84,8 @@ class _TabsWidgetState extends State<TabsWidget> {
                       fontSize: 20,
                     ),
                   ),
-                  ProjectCard(),
-                  ProjectCard(),
+                  ProjectCard(img: AssetImage("assets/images/class1.jpg"),),
+                  ProjectCard(img: AssetImage("assets/images/class2.JPG"),),
                 ],
               ),
             ),
@@ -126,7 +126,12 @@ class _TabsWidgetState extends State<TabsWidget> {
 }
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({super.key});
+  const ProjectCard({
+    super.key,
+    required this.img,
+  });
+
+  final ImageProvider img;
 
   @override
   Widget build(BuildContext context) {
@@ -143,12 +148,12 @@ class ProjectCard extends StatelessWidget {
             child: Container(
               width: deviceWidth,
               height: deviceHeight * 0.3,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/user1.jpg"),
+                  image: img,
                   fit: BoxFit.cover,
                 ),
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(20.0),
                 ),
               ),
@@ -192,7 +197,7 @@ class ProjectCard extends StatelessWidget {
                               children: [
                                 CircleAvatar(
                                   backgroundImage:
-                                      AssetImage("assets/images/user1.jpg"),
+                                      AssetImage("assets/images/Brandnn.jpg"),
                                   radius: 10.0,
                                 ),
                                 Padding(
@@ -200,7 +205,7 @@ class ProjectCard extends StatelessWidget {
                                     left: 8.0,
                                   ),
                                   child: Text(
-                                    'Username',
+                                    'iam.Bankah',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
@@ -287,7 +292,7 @@ class QuitCard extends StatelessWidget {
               child: Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: AssetImage("assets/images/user1.jpg"),
+                    backgroundImage: AssetImage("assets/images/Brandnn.jpg"),
                     radius: 10.0,
                   ),
                   Padding(
@@ -295,7 +300,7 @@ class QuitCard extends StatelessWidget {
                       left: 8.0,
                     ),
                     child: Text(
-                      'Username',
+                      'iam.Bankah',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -326,7 +331,7 @@ class QuitCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Username',
+                      'iam.Bankah',
                       style: TextStyle(
                         color: Colors.black,
                       ),
@@ -368,7 +373,7 @@ class QuitCard extends StatelessWidget {
                           children: [
                             CircleAvatar(
                               backgroundImage:
-                                  AssetImage("assets/images/user1.jpg"),
+                                  AssetImage("assets/images/Brandnn.jpg"),
                               radius: 15.0,
                             ),
                             Padding(
@@ -379,7 +384,7 @@ class QuitCard extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Username',
+                                    'iam.Bankah',
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,

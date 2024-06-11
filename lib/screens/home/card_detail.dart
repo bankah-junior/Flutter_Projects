@@ -10,6 +10,27 @@ class CardDetail extends StatelessWidget {
     var deviceWidth = MediaQuery.of(context).size.width;
     var deviceHeight = MediaQuery.of(context).size.height;
 
+    // ignore: no_leading_underscores_for_local_identifiers
+    void _showDialog(String title, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -23,6 +44,7 @@ class CardDetail extends StatelessWidget {
             icon: const Icon(Icons.save),
             onPressed: () {
               // Save logic goes here
+              _showDialog("Save", "Content saved successfully!!!");
             },
           ),
         ],
@@ -119,68 +141,47 @@ class CardDetail extends StatelessWidget {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.circle_notifications_rounded,
-                        color: Color.fromARGB(255, 71, 198, 143),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text("Beginner"),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.people_alt,
-                        color: Color.fromARGB(255, 71, 198, 143),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text("7.5k Students"),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        color: Color.fromARGB(255, 71, 198, 143),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text("4.8"),
-                    ],
-                  ),
+                  MyIconText(
+                      icon: Icons.circle_notifications_rounded,
+                      text: "Beginner"),
+                  MyIconText(icon: Icons.people_alt, text: "7.5k Students"),
+                  MyIconText(icon: Icons.star, text: "4.8"),
                 ],
               ),
               const SizedBox(
                 height: 20,
               ),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("data"),
+                  const Text("Explore more"),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const CircleAvatar(
-                        foregroundImage: AssetImage("assets/images/user1.jpg"),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      const Row(
                         children: [
-                          Text(
-                            "data",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                          CircleAvatar(
+                            foregroundImage:
+                                AssetImage("assets/images/Brandnn.jpg"),
                           ),
-                          Text("data data data data data data"),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "iam.Bankah",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text("some bio here"),
+                            ],
+                          ),
                         ],
                       ),
                       const SizedBox(
@@ -216,6 +217,33 @@ class CardDetail extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class MyIconText extends StatelessWidget {
+  const MyIconText({
+    super.key,
+    required this.icon,
+    required this.text,
+  });
+
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          icon,
+          color: const Color.fromARGB(255, 71, 198, 143),
+        ),
+        const SizedBox(
+          width: 5,
+        ),
+        Text(text),
+      ],
     );
   }
 }
