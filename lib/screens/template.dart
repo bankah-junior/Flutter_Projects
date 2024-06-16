@@ -1,9 +1,9 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:go_moon/screens/chat/chat.dart';
 import 'package:go_moon/screens/discover/discover.dart';
 import 'package:go_moon/screens/home/home.dart';
 import 'package:go_moon/screens/learning/learning.dart';
+import 'package:go_moon/screens/profile/profile.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class Template extends StatefulWidget {
@@ -25,7 +25,7 @@ class _TemplateState extends State<Template> {
           Home(),
           Discover(),
           Learning(),
-          Chat(),
+          Profile(),
         ],
       ),
       bottomNavigationBar: Padding(
@@ -84,7 +84,7 @@ class _TemplateState extends State<Template> {
               },
             ),
             GButton(
-              icon: Icons.chat_sharp,
+              icon: Icons.person,
               text: '',
               onPressed: () {
                 setState(() {
